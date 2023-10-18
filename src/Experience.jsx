@@ -1,23 +1,18 @@
-import { MeshBasicMaterial } from "three";
-import { OrbitControls } from "@react-three/drei";
-import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
-
+import Moon from "./World/Moon"
+import Lights from "./World/Staging/Lights"
+import Rockets from "./World/Rockets"
+import Environments from "./World/Staging/Environments"
 
 const Experience = () => {
-    const boxRef = useRef();
-    useFrame((state, delta)=> {
-        boxRef.current.rotation.x += 1 * delta;
-    });
-    return  <>
-        <OrbitControls makeDefault/>
-        <ambientLight intensity={0.5}/>
-        <directionalLight position={[10, 10, 5]} intensity={2}/>
-        <mesh ref = {boxRef}>
-            <boxGeometry args={[1,1,1]}/>
-            <meshStandardMaterial color = "purple"/>
-        </mesh>
-    </>
+    return ( 
+        <>
+            <Environments/>
+            <Moon  position = {[2.3,-1.5,1]} scale = {1.4}/>
+            <Lights/>
+            <Rockets position = {[-17,3,-3]} scale = {0.59}/>
+        </>
+    )
 }
 
 export default Experience;
+
